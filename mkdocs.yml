@@ -39,8 +39,8 @@ theme:
     - content.tooltips
     - toc.follow
 
-extra_css:
-  - stylesheets/extra.css
+# The guide's stylesheet (docs/stylesheets/extra.css) is linked in overrides/main.html,
+# with a version per build, so it isn't listed under extra_css.
 
 plugins:
   - search

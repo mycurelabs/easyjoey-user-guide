@@ -77,6 +77,17 @@
   --md-footer-fg-color--lighter: var(--guide-fg-2);
 }
 
+/* Sizes shared by both schemes: one type scale (5 sizes, 2 weights) and one
+   height for every control in the top bar. */
+:root {
+  --guide-t-caption: 13px;   /* breadcrumbs, sidebar labels, footer, search excerpts */
+  --guide-t-ui: 15px;        /* sidebar, contents, tables, notes, search */
+  --guide-t-body: 17px;      /* reading text, step titles, card titles */
+  --guide-t-section: 21px;   /* section headings, the line under the title */
+  --guide-t-title: 28px;     /* page title */
+  --guide-control: 36px;     /* logo, title line, buttons and search in the top bar */
+}
+
 /* Continuous (squircle) corners where the browser supports them. */
 @supports (corner-shape: squircle) {
   :root { --guide-r: 18px; }
@@ -128,49 +139,310 @@ body {
   }
 }
 
-/* Header buttons (menu, light/dark switch, search) get a 44px touch target. */
-.md-header__button.md-icon {
-  box-sizing: content-box;
-  padding: 10px;
+/* Every item in the bar is one control height and sits on the bar's centre line. */
+/* The bar, the footer and the page share one left and one right edge: 16px in. */
+.md-header__inner {
+  align-items: center;
+  min-height: 52px;
+  padding: 0 16px;
 }
 
-.md-header__topic {
-  font-size: 17px;
+/* Logo: the same height as the controls, close to the guide's name. */
+.md-header__button.md-logo {
+  margin: 0;
+  padding: 0;
+}
+
+.md-header__button.md-logo :is(img, svg) {
+  display: block;
+  width: auto;
+  height: var(--guide-control);
+}
+
+[dir] .md-header__title {
+  height: var(--guide-control);
+  margin-right: 8px;
+  margin-left: 10px;
+  line-height: var(--guide-control);
+}
+
+.md-header__topic,
+.md-header__topic:first-child {
+  font-size: var(--guide-t-body);
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
-/* Search field: a quiet filled field inside the bar. */
+/* Icon buttons (menu, light/dark switch, search on small screens): a 36px round
+   button with a hover fill. The tap area reaches 44px around it. */
+.md-header__button.md-icon {
+  position: relative;
+  box-sizing: border-box;
+  width: var(--guide-control);
+  height: var(--guide-control);
+  margin: 0 4px;
+  padding: 7px;
+  border-radius: 50%;
+  transition: background-color 150ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.md-header__button.md-icon::after {
+  position: absolute;
+  inset: -4px;
+  content: "";
+}
+
+.md-header__button.md-icon svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+/* The last item before the edge sits on it, like the logo on the left. */
+.md-header__inner > .md-header__button.md-icon:last-child {
+  margin-right: 0;
+}
+
+/* "Skip to content" (shown on keyboard focus) and "Back to top" use the scale too. */
+.md-skip {
+  font-size: var(--guide-t-caption);
+}
+
+.md-top {
+  font-size: var(--guide-t-ui);
+}
+
+@media (hover: hover) {
+  .md-header__button.md-icon:hover {
+    background-color: var(--guide-elev-hover);
+    opacity: 1;
+  }
+}
+
+/* ---------- Search ---------- */
+
+/* Large screens: a filled, rounded field in the bar. Opening it keeps the same
+   height and shape and adds a focus ring; results float below in a panel. */
 @media screen and (min-width: 60em) {
-  .md-search__form {
+  .md-search__inner {
+    width: 234px;
+    padding: 0;
+  }
+
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__inner {
+    width: 420px;
+  }
+
+  .md-search__form,
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__form {
+    height: var(--guide-control);
     border-radius: 10px;
     background-color: var(--guide-elev);
+    box-shadow: none;
+    transition: background-color 150ms cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 150ms cubic-bezier(0.25, 0.1, 0.25, 1);
   }
 
   .md-search__form:hover {
     background-color: var(--guide-elev-hover);
   }
 
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__form {
+    background-color: var(--guide-bg);
+    box-shadow: 0 0 0 1px var(--guide-sep), 0 0 0 4px color-mix(in srgb, var(--guide-accent) 28%, transparent);
+  }
+
+  /* The typed text and the theme's grey completion behind it share padding and size. */
+  [dir] :is(.md-search__input, .md-search__suggest) {
+    padding-left: 38px;
+    padding-right: 36px;
+    font-size: var(--guide-t-ui);
+  }
+
+  .md-search__icon[for="__search"] {
+    top: 50%;
+    left: 10px;
+    width: 18px;
+    height: 18px;
+    transform: translateY(-50%);
+  }
+
+  .md-search__options {
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+  }
+
   .md-search__input,
   .md-search__input::placeholder,
-  .md-search__input ~ .md-search__icon {
+  .md-search__input ~ .md-search__icon,
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__input + .md-search__icon {
     color: var(--guide-fg-2);
   }
 
   [data-md-toggle="search"]:checked ~ .md-header .md-search__input {
     color: var(--guide-fg);
   }
+
+  /* The field shows the focus ring, so the input's own outline is left off. */
+  .md-search__input:focus-visible {
+    outline: none;
+  }
+
+  .md-search__output,
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__output {
+    top: calc(var(--guide-control) + 8px);
+    border-radius: var(--guide-r);
+  }
+
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__output {
+    border: 1px solid var(--guide-sep);
+    background: var(--guide-bg);
+    box-shadow: 0 12px 40px rgb(0 0 0 / 12%);
+  }
+
+  .md-search__scrollwrap,
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__scrollwrap {
+    width: 100%;
+  }
+
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__scrollwrap {
+    max-height: min(70vh, 640px);
+  }
+}
+
+/* Large screens: the page dims only a little behind open search. */
+@media screen and (min-width: 60em) {
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__overlay {
+    background-color: rgb(0 0 0 / 18%);
+  }
+
+  [data-md-color-scheme="slate"] [data-md-toggle="search"]:checked ~ .md-header .md-search__overlay {
+    background-color: rgb(0 0 0 / 50%);
+  }
+}
+
+/* Results: page title, then matching sections, each with a short excerpt.
+   Matches are tinted, not underlined. */
+[dir] .md-search-result__meta {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--guide-sep);
+  background: transparent;
+  color: var(--guide-fg-2);
+  font-size: var(--guide-t-caption);
+  line-height: 1.4;
+}
+
+.md-search-result__icon {
+  display: none;
+}
+
+.md-search-result__article,
+[dir] .md-search-result__article {
+  padding: 10px 16px;
+}
+
+.md-search-result__article > :first-child,
+.md-search-result__article > .md-search-result__icon + * {
+  margin-top: 0;
+}
+
+.md-search-result .md-typeset :is(h1, h2) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--guide-fg);
+  font-size: var(--guide-t-ui);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+.md-search-result__article--document + .md-search-result__article,
+.md-search-result__link + .md-search-result__link .md-search-result__article {
+  padding-top: 6px;
+}
+
+.md-search-result .md-typeset h2 {
+  font-weight: 400;
+}
+
+/* Every excerpt (a paragraph, list or table) stops after two lines. */
+.md-search-result__article > :not(h1, h2, .md-search-result__icon) {
+  display: -webkit-box;
+  margin: 4px 0 0;
+  overflow: hidden;
+  color: var(--guide-fg-2);
+  font-size: var(--guide-t-caption);
+  line-height: 1.45;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  max-height: calc(2 * 1.45em);   /* lists and tables don't clamp by lines */
+}
+
+.md-search-result mark {
+  padding: 0 2px;
+  border-radius: 3px;
+  background-color: color-mix(in srgb, var(--guide-accent) 16%, transparent);
+  color: inherit;
+  text-decoration: none;
+}
+
+.md-search-result__link:is(:hover, :focus) {
+  background-color: var(--guide-elev);
+}
+
+.md-search-result__item {
+  border-bottom: 1px solid var(--guide-sep);
+  box-shadow: none;
+}
+
+.md-search-result__more > summary > div,
+[dir] .md-search-result__more > summary > div {
+  padding: 8px 16px;
+  color: var(--guide-accent);
+  font-size: var(--guide-t-caption);
+}
+
+.md-search-result__more > summary:is(:hover, :focus) > div {
+  background-color: var(--guide-elev);
+  color: var(--guide-accent);
+}
+
+/* Small screens: search opens full screen under the bar. The bar's blur would
+   make it the frame for that full-screen panel (squashing it to the bar's
+   height), so the bar is solid while search is open. */
+@media screen and (max-width: 59.984375em) {
+  [data-md-toggle="search"]:checked ~ .md-header {
+    background-color: var(--guide-bar-solid);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .md-search__form {
+    height: 52px;
+  }
+
+  :is(.md-search__input, .md-search__suggest) {
+    font-size: var(--guide-t-body);
+  }
+
+  .md-search__scrollwrap {
+    background-color: var(--guide-bg);
+  }
 }
 
 /* ---------- Reading text ---------- */
 
 .md-typeset {
-  font-size: 17px;
+  font-size: var(--guide-t-body);
   line-height: 1.53;
   letter-spacing: -0.011em;
 }
 
-.md-typeset strong {
+/* Two weights only: regular (400) and semibold (600). The theme's bold (700) becomes semibold. */
+.md-typeset :is(strong, b, th),
+.md-nav__item--section > .md-nav__link,
+.md-nav__title {
   font-weight: 600;
 }
 
@@ -187,18 +459,18 @@ body {
 .md-typeset h1 {
   margin: 0 0 12px;
   color: var(--guide-fg);
-  font-size: 34px;
+  font-size: var(--guide-t-title);
   font-weight: 600;
   line-height: 1.15;
-  letter-spacing: -0.022em;
+  letter-spacing: -0.02em;
 }
 
 .md-typeset h2 {
   margin: 48px 0 16px;
-  font-size: 26px;
+  font-size: var(--guide-t-section);
   font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.018em;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
 }
 
 /* Each numbered step starts a new block, divided by a hairline. */
@@ -206,10 +478,10 @@ body {
   margin: 36px 0 12px;
   padding-top: 24px;
   border-top: 1px solid var(--guide-sep);
-  font-size: 20px;
+  font-size: var(--guide-t-body);
   font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.012em;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
 }
 
 .md-typeset h2 + h3 {
@@ -219,14 +491,11 @@ body {
 }
 
 @media screen and (max-width: 44.984375em) {
-  .md-typeset h1 { font-size: 28px; }
-  .md-typeset h2 { margin-top: 40px; font-size: 22px; }
-  .md-typeset h3 { font-size: 19px; }
-  .md-typeset h1 + p.meta, .md-typeset p.lead { font-size: 19px; }
+  .md-typeset h2 { margin-top: 40px; }
 }
 
 .md-path {
-  font-size: 13px;
+  font-size: var(--guide-t-caption);
 }
 
 .md-path__link {
@@ -239,9 +508,9 @@ body {
 .md-typeset h1 + p.meta,
 .md-typeset p.lead {
   color: var(--guide-fg-2);
-  font-size: 21px;
+  font-size: var(--guide-t-section);
   line-height: 1.38;
-  letter-spacing: 0.004em;
+  letter-spacing: -0.005em;
 }
 
 /* "Time · You'll need" sits on its own grouped surface so it isn't skipped. */
@@ -250,7 +519,7 @@ body {
   border-radius: var(--guide-r);
   background: var(--guide-elev);
   color: var(--guide-fg);
-  font-size: 15px;
+  font-size: var(--guide-t-ui);
 }
 
 /* ---------- Steps ---------- */
@@ -306,7 +575,7 @@ body {
   border-radius: var(--guide-r);
   background: var(--guide-elev);
   box-shadow: none;
-  font-size: 16px;
+  font-size: var(--guide-t-ui);
 }
 
 .md-typeset .admonition > .admonition-title,
@@ -340,7 +609,7 @@ body {
 .md-typeset table:not([class]) {
   border: 1px solid var(--guide-sep);
   border-radius: var(--guide-r);
-  font-size: 15px;
+  font-size: var(--guide-t-ui);
   line-height: 1.45;
 }
 
@@ -376,7 +645,7 @@ body {
 
 .md-typeset .grid.cards > ul > li > p:first-child {
   margin-top: 0;
-  font-size: 19px;
+  font-size: var(--guide-t-body);
   letter-spacing: -0.01em;
 }
 
@@ -404,7 +673,7 @@ body {
   margin: 16px 0 8px;
   padding: 0;
   border: 0;
-  font-size: 19px;
+  font-size: var(--guide-t-body);
 }
 
 .md-typeset .group h3 .twemoji {
@@ -454,7 +723,7 @@ body {
 .md-typeset .group:not(.plain) ul li > a::after {
   flex: none;
   color: var(--guide-chevron);
-  font-size: 22px;
+  font-size: var(--guide-t-section);
   line-height: 1;
   content: "\203a" / "";
 }
@@ -479,13 +748,254 @@ body {
   }
 }
 
+/* ---------- Sidebar and contents ---------- */
+
+/* One rhythm: every link is one row height, sections are spaced evenly, and
+   text is full contrast. Section labels are small and semibold, so they read as
+   labels rather than links. */
+.md-nav {
+  font-size: var(--guide-t-ui);
+  line-height: 1.35;
+}
+
+.md-nav__link {
+  margin-top: 0;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: var(--guide-fg);
+}
+
+.md-nav__item .md-nav__link--active,
+.md-nav__item .md-nav__link--active code {
+  color: var(--guide-accent);
+}
+
+/* The page you're on: a soft fill behind the accent-coloured name. */
+.md-sidebar--primary .md-nav__link--active {
+  background: var(--guide-elev);
+  font-weight: 400;
+}
+
+@media (hover: hover) {
+  .md-sidebar--primary .md-nav__link[href]:hover {
+    background: var(--guide-elev);
+    color: var(--guide-fg);
+  }
+}
+
+@media screen and (min-width: 76.25em) {
+  /* The guide's name is already in the top bar. */
+  .md-nav--primary > .md-nav__title {
+    display: none;
+  }
+
+  .md-nav--primary > .md-nav__list {
+    margin-left: -10px;
+  }
+
+  .md-nav__item--section {
+    margin: 20px 0 0;
+  }
+
+  .md-nav__item--section > .md-nav__link,
+  .md-nav__item--section > .md-nav__link[for] {
+    margin-bottom: 2px;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: var(--guide-fg-2);
+    font-size: var(--guide-t-caption);
+    letter-spacing: 0.01em;
+  }
+
+  .md-nav__item--section > .md-nav {
+    margin-left: 0;
+  }
+}
+
+/* The slide-out menu on an iPad or phone uses the same sizes and weights. */
+.md-nav--primary :is(.md-nav__title, .md-nav__item),
+.md-nav--primary .md-nav__title[for="__drawer"] {
+  font-size: var(--guide-t-ui);
+  font-weight: inherit;
+}
+
+.md-nav--primary .md-nav__title,
+.md-nav--primary .md-nav__title[for="__drawer"] {
+  font-weight: 600;
+}
+
+/* Contents on the right: the same row height, at caption size. */
+.md-sidebar--secondary .md-nav {
+  font-size: var(--guide-t-caption);
+}
+
+.md-sidebar--secondary .md-nav__title {
+  padding: 0 10px 6px;
+  color: var(--guide-fg);
+  font-size: var(--guide-t-caption);
+  box-shadow: none;
+  background: transparent;
+}
+
+.md-sidebar--secondary .md-nav__link {
+  padding: 4px 10px;
+}
+
+/* Contents hierarchy: a thin guide line on the left. Sections are dark text;
+   the steps inside them are grey and indented. The part you're reading is in the
+   accent colour, with a bar on the guide line. */
+.md-sidebar--secondary .md-nav--secondary > .md-nav__list {
+  border-left: 1px solid var(--guide-chevron);
+}
+
+[dir] .md-sidebar--secondary .md-nav__item > .md-nav {
+  margin-left: 0;
+}
+
+.md-sidebar--secondary .md-nav__link {
+  position: relative;
+  margin: 0;
+  border-radius: 0;
+  padding-left: 12px;
+  color: var(--guide-fg);
+}
+
+.md-sidebar--secondary .md-nav__item .md-nav__item > .md-nav__link {
+  padding-left: 24px;
+  color: color-mix(in srgb, var(--guide-fg) 80%, var(--guide-bg));
+}
+
+.md-sidebar--secondary .md-nav__item .md-nav__link--active,
+.md-sidebar--secondary .md-nav__item .md-nav__item > .md-nav__link--active {
+  color: var(--guide-accent);
+}
+
+.md-sidebar--secondary .md-nav__link--active::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1px;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--guide-accent);
+  content: "";
+}
+
+@media (hover: hover) {
+  .md-sidebar--secondary .md-nav__link:hover {
+    color: var(--guide-accent);
+  }
+}
+
+/* On an iPad or phone, every row in the menu is a 44px target. */
+@media (pointer: coarse) {
+  .md-nav__link {
+    min-height: 44px;
+    align-items: center;
+  }
+}
+
 /* ---------- Footer ---------- */
 
+/* Previous and Next line up with the top bar's edges; each label sits directly
+   above its page name. Both lines of small print share one size and colour. */
 .md-footer {
   border-top: 1px solid var(--guide-sep);
+  color: var(--guide-fg);
+}
+
+.md-footer__inner {
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.md-footer__link {
+  align-items: center;
+  gap: 12px;
+  max-width: calc(50% - 12px);
+  padding: 8px 0;
+  margin: 0;
+}
+
+/* Long page names wrap instead of being cut off. */
+.md-footer__title .md-ellipsis {
+  white-space: normal;
+}
+
+.md-footer__link--prev {
+  padding-left: 0;
+}
+
+.md-footer__link--next {
+  justify-content: flex-end;
+  padding-right: 0;
+}
+
+.md-footer__button.md-icon {
+  margin: 0;
+  padding: 0;
+  color: var(--guide-fg-2);
+}
+
+.md-footer__title,
+.md-footer__link--prev .md-footer__title {
+  display: block;
+  flex-grow: 0;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--guide-t-body);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.md-footer__link--next .md-footer__title {
+  text-align: right;
+}
+
+.md-footer__direction,
+[dir] .md-footer__direction {
+  position: static;
+  display: block;
+  margin: 0 0 2px;
+  padding: 0;
+  color: var(--guide-fg-2);
+  font-size: var(--guide-t-caption);
+  font-weight: 400;
+  opacity: 1;
 }
 
 .md-footer-meta {
   border-top: 1px solid var(--guide-sep);
-  font-size: 12px;
+  background: var(--guide-elev);
+}
+
+.md-footer-meta__inner {
+  padding: 14px 16px;
+}
+
+.md-copyright {
+  margin: 0;
+  padding: 0;
+  color: var(--guide-fg-2);
+  font-size: var(--guide-t-caption);
+  line-height: 1.5;
+}
+
+.md-copyright__highlight {
+  display: inline;
+  color: inherit;
+}
+
+.md-copyright__highlight::after {
+  content: " · " / "";
+}
+
+.md-copyright a {
+  color: inherit;
+}
+
+.md-copyright a:hover {
+  color: var(--guide-fg);
+  text-decoration: underline;
 }

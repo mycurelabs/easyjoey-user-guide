@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
+  {#- The guide's stylesheet keeps its file name, and browsers may reuse a saved copy for a while
+      after a deploy. The build time in its address makes each deploy's stylesheet a new file to the
+      browser. It's linked here rather than in extra_css, which can't carry a version. -#}
+  <link rel="stylesheet" href="{{ 'stylesheets/extra.css' | url }}?v={{ build_date_utc.strftime('%Y%m%d%H%M%S') }}">
   <script>
     /* The light/dark switch once had three options (follow the device, light, dark), and the
        theme saves the chosen option's position. It now has two, so a position saved by the old
