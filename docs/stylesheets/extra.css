@@ -864,7 +864,7 @@ body {
   color: var(--guide-fg);
   font-size: var(--guide-t-caption);
   box-shadow: none;
-  background: transparent;
+  background: var(--guide-bg);   /* the title stays pinned while the list scrolls: it needs a solid background */
 }
 
 .md-sidebar--secondary .md-nav__link {
