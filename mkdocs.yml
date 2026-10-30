@@ -6,6 +6,7 @@ copyright: EasyJoey by MYCURE Inc. · Screenshots use made-up demo data.
 
 theme:
   name: material
+  custom_dir: overrides
   language: en
   logo: assets/brand/icon.png
   favicon: assets/brand/icon.png

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  <script>
+    /* The light/dark switch once had three options (follow the device, light, dark), and the
+       theme saves the chosen option's position. It now has two, so a position saved by the old
+       switch would open the wrong mode. Old choices carry a device rule; drop them, and the
+       guide opens in light. Choices made with the current switch are kept. */
+    try {
+      var saved = __md_get("__palette");
+      if (saved && saved.color && saved.color.media) {
+        localStorage.removeItem(__md_scope.pathname + ".__palette");
+      }
+    } catch (e) {}
+  </script>
+{% endblock %}
