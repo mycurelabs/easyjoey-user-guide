@@ -366,8 +366,18 @@ body {
   font-weight: 400;
 }
 
-/* Every excerpt (a paragraph, list or table) stops after two lines. */
-.md-search-result__article > :not(h1, h2, .md-search-result__icon) {
+/* Excerpts are caption text in secondary grey. Text from tables and
+   definition lists arrives bare in the article (the search index keeps only
+   paragraphs, lists and code), with the matched words as inline marks.
+   Two classes, to win over Material's `.md-search-result .md-typeset`. */
+.md-search-result .md-search-result__article {
+  color: var(--guide-fg-2);
+  font-size: var(--guide-t-caption);
+  line-height: 1.45;
+}
+
+/* Every excerpt stops after two lines. */
+.md-search-result__article > :is(p, ul, ol, pre) {
   display: -webkit-box;
   margin: 4px 0 0;
   overflow: hidden;
@@ -376,14 +386,34 @@ body {
   line-height: 1.45;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  max-height: calc(2 * 1.45em);   /* lists and tables don't clamp by lines */
+  max-height: calc(2 * 1.45em);   /* lists don't clamp by lines */
+}
+
+.md-search-result__article :is(ul, ol) > li {
+  margin-top: 0;                   /* whole lines only under the cap above */
+  margin-bottom: 0;
+}
+
+/* Bare text has no element of its own to clamp, so the article stops after
+   its heading plus two lines. The clipped lines would still show through the
+   bottom padding, so that space is a margin instead. */
+.md-search-result__article:not(:has(> :is(p, ul, ol, pre))) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+[dir] .md-search-result__article:not(:has(> :is(p, ul, ol, pre))) {
+  margin-bottom: 10px;
+  padding-bottom: 0;
 }
 
 .md-search-result mark {
   padding: 0 2px;
   border-radius: 3px;
   background-color: color-mix(in srgb, var(--guide-accent) 16%, transparent);
-  color: inherit;
+  color: var(--guide-fg);          /* grey on the tint is under 4.5:1 */
   text-decoration: none;
 }
 
