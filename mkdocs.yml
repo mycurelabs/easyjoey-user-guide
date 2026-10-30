@@ -10,25 +10,22 @@ theme:
   logo: assets/brand/icon.png
   favicon: assets/brand/icon.png
   font: false
+  # Light is the default for every new visitor; the header switch flips to dark.
+  # The theme stores the choice in the browser's site storage, so it holds
+  # across refreshes until the visitor clears their browsing data.
   palette:
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
+    - scheme: default
       primary: custom
       accent: custom
       toggle:
-        icon: material/brightness-7
+        icon: material/weather-night
         name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+    - scheme: slate
       primary: custom
       accent: custom
       toggle:
-        icon: material/brightness-4
-        name: Switch to system preference
+        icon: material/weather-sunny
+        name: Switch to light mode
   features:
     - navigation.instant
     - navigation.path
