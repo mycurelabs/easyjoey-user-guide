@@ -1,76 +1,230 @@
-/* Brand: ink is the primary, blue marks links and focus (EasyJoey). */
-:root {
-  --md-primary-fg-color: #1d1d1f;
-  --md-primary-fg-color--light: #3a3a3c;
-  --md-primary-fg-color--dark: #000000;
-  --md-primary-bg-color: #ffffff;
-  --md-primary-bg-color--light: #ffffffb3;
-  --md-accent-fg-color: #0066cc;
-  --md-typeset-a-color: #0066cc;
-  /* Tints used by the page parts below. */
-  --ej-tint: rgb(0 102 204 / 6%);
-  --ej-tint-strong: rgb(0 102 204 / 12%);
-  --ej-ok: #1a7f37;
-  --ej-ok-tint: rgb(26 127 55 / 7%);
-  --ej-card-border: var(--md-default-fg-color--lightest);
-}
+/* EasyJoey guide: Apple-style reading surface on top of MkDocs Material.
+   Grayscale palette with one accent (link blue). Status colours (green check,
+   orange warning) always sit next to an icon and a label. */
 
-/* The light scheme sets its own link colour from the (black) primary, which
-   makes links look like plain text; keep them blue so they read as links. */
+/* ---------- Tokens ---------- */
+
+:root,
 [data-md-color-scheme="default"] {
-  --md-accent-fg-color: #0066cc;
-  --md-typeset-a-color: #0066cc;
+  --ej-fg: #1d1d1f;
+  --ej-fg-2: #6e6e73;             /* secondary text: 5.07:1 on white */
+  --ej-bg: #ffffff;
+  --ej-elev: #f5f5f7;             /* grouped surfaces */
+  --ej-elev-hover: #ebebef;
+  --ej-sep: #d2d2d7;              /* hairlines (decorative) */
+  --ej-chevron: #86868b;
+  --ej-accent: #0066cc;
+  --ej-ok: #248a3d;
+  --ej-warn: #b64400;
+  --ej-bar: rgb(251 251 253 / 80%);
+  --ej-bar-solid: #fbfbfd;
+  --ej-img-shadow: 0 1px 2px rgb(0 0 0 / 4%), 0 6px 20px rgb(0 0 0 / 6%);
+  --ej-r: 12px;
+
+  --md-default-fg-color: var(--ej-fg);
+  --md-default-fg-color--light: var(--ej-fg-2);
+  --md-default-bg-color: var(--ej-bg);
+  --md-typeset-color: var(--ej-fg);
+  --md-typeset-a-color: var(--ej-accent);
+  --md-typeset-table-color: var(--ej-sep);
+  --md-primary-fg-color: var(--ej-bar-solid);
+  --md-primary-fg-color--light: var(--ej-elev);
+  --md-primary-fg-color--dark: var(--ej-fg);
+  --md-primary-bg-color: var(--ej-fg);
+  --md-primary-bg-color--light: var(--ej-fg-2);
+  --md-accent-fg-color: var(--ej-accent);
+  --md-footer-bg-color: var(--ej-elev);
+  --md-footer-bg-color--dark: var(--ej-elev);
+  --md-footer-fg-color: var(--ej-fg);
+  --md-footer-fg-color--light: var(--ej-fg-2);
+  --md-footer-fg-color--lighter: var(--ej-fg-2);
 }
 
+/* Dark is its own palette, not an inversion: black page, lighter raised surfaces. */
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color: #1d1d1f;
-  --md-primary-bg-color: #f5f5f7;
-  --md-accent-fg-color: #4ea1ff;
-  --md-typeset-a-color: #4ea1ff;
-  --ej-tint: rgb(78 161 255 / 10%);
-  --ej-tint-strong: rgb(78 161 255 / 18%);
-  --ej-ok: #4ac26b;
-  --ej-ok-tint: rgb(74 194 107 / 10%);
+  --ej-fg: #f5f5f7;
+  --ej-fg-2: #a1a1a6;
+  --ej-bg: #000000;
+  --ej-elev: #1c1c1e;
+  --ej-elev-hover: #2c2c2e;
+  --ej-sep: #38383a;
+  --ej-chevron: #8e8e93;
+  --ej-accent: #2997ff;
+  --ej-ok: #30d158;
+  --ej-warn: #ff9f0a;
+  --ej-bar: rgb(22 22 23 / 80%);
+  --ej-bar-solid: #161617;
+  --ej-img-shadow: none;
+
+  --md-default-fg-color: var(--ej-fg);
+  --md-default-fg-color--light: var(--ej-fg-2);
+  --md-default-fg-color--lighter: #86868b;
+  --md-default-fg-color--lightest: var(--ej-sep);
+  --md-default-bg-color: var(--ej-bg);
+  --md-typeset-color: var(--ej-fg);
+  --md-typeset-a-color: var(--ej-accent);
+  --md-typeset-table-color: var(--ej-sep);
+  --md-primary-fg-color: var(--ej-bar-solid);
+  --md-primary-fg-color--light: var(--ej-elev);
+  --md-primary-fg-color--dark: var(--ej-fg);
+  --md-primary-bg-color: var(--ej-fg);
+  --md-primary-bg-color--light: var(--ej-fg-2);
+  --md-accent-fg-color: var(--ej-accent);
+  --md-footer-bg-color: var(--ej-elev);
+  --md-footer-bg-color--dark: var(--ej-elev);
+  --md-footer-fg-color: var(--ej-fg);
+  --md-footer-fg-color--light: var(--ej-fg-2);
+  --md-footer-fg-color--lighter: var(--ej-fg-2);
+}
+
+/* Continuous (squircle) corners where the browser supports them. */
+@supports (corner-shape: squircle) {
+  :root { --ej-r: 18px; }
+
+  .md-typeset img,
+  .md-typeset table:not([class]),
+  .md-typeset .admonition,
+  .md-typeset details,
+  .md-typeset .see,
+  .md-typeset p.meta + p.meta,
+  .md-typeset .grid.cards > ul > li,
+  .md-typeset .group ul {
+    corner-shape: squircle;
+  }
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Slightly larger body text: the guide is read on iPads, often at arm's length. */
+:root :focus-visible {
+  outline: 2px solid var(--ej-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Header: a frosted bar that content scrolls beneath ---------- */
+
+.md-header,
+.md-header--shadow {
+  background-color: var(--ej-bar-solid);
+  color: var(--ej-fg);
+  box-shadow: 0 1px 0 var(--ej-sep);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .md-header {
+    background-color: var(--ej-bar);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more), (prefers-reduced-motion: reduce) {
+  .md-header {
+    background-color: var(--ej-bar-solid);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+.md-header__topic {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Search field: a quiet filled field inside the bar. */
+@media screen and (min-width: 60em) {
+  .md-search__form {
+    border-radius: 10px;
+    background-color: var(--ej-elev);
+  }
+
+  .md-search__form:hover {
+    background-color: var(--ej-elev-hover);
+  }
+
+  .md-search__input,
+  .md-search__input::placeholder,
+  .md-search__input ~ .md-search__icon {
+    color: var(--ej-fg-2);
+  }
+
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__input {
+    color: var(--ej-fg);
+  }
+}
+
+/* ---------- Reading text ---------- */
+
 .md-typeset {
-  font-size: 0.86rem;
-  line-height: 1.65;
+  font-size: 17px;
+  line-height: 1.53;
+  letter-spacing: -0.011em;
 }
 
-/* ---------- Headings ---------- */
+.md-typeset strong {
+  font-weight: 600;
+}
 
-/* The page title is the task: make it the strongest thing on the page. */
+/* Keep lines a comfortable length; pictures and tables keep their own width. */
+.md-typeset > :is(p:not(:has(img)), ul, ol, h1, h2, h3, .admonition, details) {
+  max-width: 44em;
+}
+
+.md-typeset a:hover {
+  text-decoration: underline;
+}
+
+/* Title ramp: semibold, tight tracking at large sizes. */
 .md-typeset h1 {
-  color: var(--md-default-fg-color);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.6em;
+  margin: 0 0 12px;
+  color: var(--ej-fg);
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.022em;
 }
 
 .md-typeset h2 {
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  margin-top: 2.2em;
+  margin: 48px 0 16px;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
 }
 
-/* Each numbered step starts a new block, so steps never run together. */
+/* Each numbered step starts a new block, divided by a hairline. */
 .md-typeset h3 {
-  font-weight: 700;
-  margin-top: 2em;
-  padding-top: 1.2em;
-  border-top: 1px solid var(--md-default-fg-color--lightest);
+  margin: 36px 0 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--ej-sep);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
 }
 
 .md-typeset h2 + h3 {
-  border-top: 0;
+  margin-top: 16px;
   padding-top: 0;
-  margin-top: 1.2em;
+  border-top: 0;
+}
+
+@media screen and (max-width: 44.984375em) {
+  .md-typeset h1 { font-size: 28px; }
+  .md-typeset h2 { margin-top: 40px; font-size: 22px; }
+  .md-typeset h3 { font-size: 19px; }
+  .md-typeset h1 + p.meta, .md-typeset p.lead { font-size: 19px; }
+}
+
+.md-path {
+  font-size: 13px;
+}
+
+.md-path__link {
+  color: var(--ej-fg-2);
 }
 
 /* ---------- The top of each page ---------- */
@@ -78,37 +232,37 @@ body {
 /* The sentence under the title says what the page is for. */
 .md-typeset h1 + p.meta,
 .md-typeset p.lead {
-  color: var(--md-default-fg-color--light);
-  font-size: 1.05em;
-  margin-top: -0.2em;
+  color: var(--ej-fg-2);
+  font-size: 21px;
+  line-height: 1.38;
+  letter-spacing: 0.004em;
 }
 
-/* "Time · You'll need" sits in its own strip so it isn't skipped. */
+/* "Time · You'll need" sits on its own grouped surface so it isn't skipped. */
 .md-typeset p.meta + p.meta {
-  padding: 0.6rem 0.9rem;
-  border-radius: 10px;
-  background: var(--ej-tint);
-  color: var(--md-default-fg-color);
-  font-size: 0.8rem;
+  padding: 12px 16px;
+  border-radius: var(--ej-r);
+  background: var(--ej-elev);
+  color: var(--ej-fg);
+  font-size: 15px;
 }
 
 /* ---------- Steps ---------- */
 
-/* "You should see:" boxes: what the screen looks like when the step worked. */
+/* "You should see:" — what the screen looks like when the step worked. */
 .md-typeset .see {
   position: relative;
-  padding: 0.55rem 0.9rem 0.55rem 2.4rem;
-  border-left: 4px solid var(--ej-ok);
-  border-radius: 0 10px 10px 0;
-  background: var(--ej-ok-tint);
+  padding: 12px 16px 12px 44px;
+  border-radius: var(--ej-r);
+  background: var(--ej-elev);
 }
 
 .md-typeset .see::before {
   position: absolute;
-  top: 0.72rem;
-  left: 0.8rem;
-  width: 1rem;
-  height: 1rem;
+  top: 15px;
+  left: 16px;
+  width: 18px;
+  height: 18px;
   content: "";
   background-color: var(--ej-ok);
   -webkit-mask-image: var(--md-admonition-icon--success);
@@ -119,15 +273,15 @@ body {
   mask-repeat: no-repeat;
 }
 
-/* Screenshots: a soft frame so white app screens don't melt into the page,
-   capped so a full iPad screen stays readable without scrolling sideways. */
+/* Screenshots: a hairline and a soft shadow so white app screens don't melt
+   into the page, capped so a full iPad screen stays readable. */
 .md-typeset img:not(.twemoji):not([src$=".svg"]) {
   display: block;
   max-width: min(860px, 100%);
-  margin: 0.8rem 0 1.4rem;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgb(0 0 0 / 8%);
+  margin: 16px 0 24px;
+  border: 1px solid var(--ej-sep);
+  border-radius: var(--ej-r);
+  box-shadow: var(--ej-img-shadow);
 }
 
 /* A narrower screenshot for a single sheet, menu or dialog: ![...](x.png){ .shot-sm } */
@@ -135,44 +289,197 @@ body {
   max-width: min(520px, 100%);
 }
 
-/* Tables: a tinted header row so the columns are easy to follow. */
+/* ---------- Tips, warnings and notes ---------- */
+
+/* One quiet grouped surface for every kind; the icon carries the kind. */
+.md-typeset .admonition,
+.md-typeset details {
+  margin: 24px 0;
+  padding: 0 16px 4px;
+  border: 0;
+  border-radius: var(--ej-r);
+  background: var(--ej-elev);
+  box-shadow: none;
+  font-size: 16px;
+}
+
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > summary {
+  margin: 0 -16px;
+  padding: 14px 16px 2px 44px;
+  border: 0;
+  background: transparent;
+  font-weight: 600;
+}
+
+.md-typeset .admonition > .admonition-title::before,
+.md-typeset details > summary::before {
+  top: 15px;
+  left: 16px;
+  width: 18px;
+  height: 18px;
+  background-color: var(--ej-accent);
+}
+
+.md-typeset :is(.admonition.warning, .admonition.danger, details.warning) > :is(.admonition-title, summary)::before {
+  background-color: var(--ej-warn);
+}
+
+.md-typeset .admonition > :last-child {
+  margin-bottom: 12px;
+}
+
+/* ---------- Tables ---------- */
+
+.md-typeset table:not([class]) {
+  border: 1px solid var(--ej-sep);
+  border-radius: var(--ej-r);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
 .md-typeset table:not([class]) th {
-  background: var(--ej-tint);
+  background: var(--ej-elev);
+  font-weight: 600;
 }
 
-/* ---------- Welcome page cards ---------- */
-
-.md-typeset .grid.cards > ul > li,
-.md-typeset .grid > div {
-  border: 1px solid var(--ej-card-border);
-  border-radius: 14px;
-  transition: border-color 150ms, box-shadow 150ms;
+.md-typeset table:not([class]) :is(th, td) {
+  padding: 10px 14px;
 }
 
-.md-typeset .grid > div {
-  padding: 0.8rem 1rem;
+.md-typeset table:not([class]) tbody tr:hover {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* ---------- Welcome page ---------- */
+
+/* "Start here": two raised tiles. */
+.md-typeset .grid.cards > ul > li {
+  padding: 20px;
+  border: 0;
+  border-radius: var(--ej-r);
+  background: var(--ej-elev);
+  box-shadow: none;
 }
 
 .md-typeset .grid.cards > ul > li:hover {
-  border-color: var(--md-accent-fg-color);
-  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);
+  border: 0;
+  box-shadow: none;
+}
+
+.md-typeset .grid.cards > ul > li > p:first-child {
+  margin-top: 0;
+  font-size: 19px;
+  letter-spacing: -0.01em;
 }
 
 .md-typeset .grid.cards .lg {
-  color: var(--md-accent-fg-color);
+  color: var(--ej-accent);
 }
 
-/* The two "Start here" cards stand out from the list of guides. */
-.md-typeset .grid.cards.start > ul > li {
-  background: var(--ej-tint);
-  border-color: var(--ej-tint-strong);
+.md-typeset .grid.cards hr {
+  display: none;
 }
 
-.md-typeset .grid.cards ul ul {
-  margin-left: 0;
+/* "Read the overview ›": the chevron is decoration, hidden from screen readers. */
+.md-typeset a.more::after {
+  content: "\00a0\203a" / "";
+}
+
+/* "The guides": Settings-style grouped lists, one per section. */
+.md-typeset .groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 8px 32px;
+}
+
+.md-typeset .group h3 {
+  margin: 16px 0 8px;
+  padding: 0;
+  border: 0;
+  font-size: 19px;
+}
+
+.md-typeset .group h3 .twemoji {
+  margin-right: 4px;
+  color: var(--ej-accent);
+}
+
+.md-typeset .group ul {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: var(--ej-r);
+  background: var(--ej-elev);
   list-style: none;
 }
 
-.md-typeset .grid.cards ul ul li {
-  margin-left: 0;
+.md-typeset .group ul li {
+  position: relative;
+  margin: 0;
+}
+
+/* Inset separators between rows, as in a grouped list. */
+.md-typeset .group ul li + li::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 16px;
+  border-top: 1px solid var(--ej-sep);
+  content: "";
+}
+
+.md-typeset .group:not(.plain) ul li > a,
+.md-typeset .group.plain ul li {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 11px 16px;
+}
+
+.md-typeset .group:not(.plain) ul li > a {
+  gap: 12px;
+  justify-content: space-between;
+  outline-offset: -2px;
+  transition: background-color 150ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.md-typeset .group:not(.plain) ul li > a::after {
+  flex: none;
+  color: var(--ej-chevron);
+  font-size: 22px;
+  line-height: 1;
+  content: "\203a" / "";
+}
+
+.md-typeset .group ul li > a:hover {
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .md-typeset .group:not(.plain) ul li > a:hover {
+    background-color: var(--ej-elev-hover);
+  }
+}
+
+.md-typeset .group.plain ul li {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset .group ul li > a {
+    transition: none;
+  }
+}
+
+/* ---------- Footer ---------- */
+
+.md-footer {
+  border-top: 1px solid var(--ej-sep);
+}
+
+.md-footer-meta {
+  border-top: 1px solid var(--ej-sep);
+  font-size: 12px;
 }

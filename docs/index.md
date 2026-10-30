@@ -20,7 +20,7 @@ This guide walks you through the everyday tasks, one page per task, with a pictu
 
     How everything fits together: booking, check-in, the visit, charges and payment. Read this first.
 
-    [:octicons-arrow-right-24: Read the overview](getting-started/a-day-at-the-clinic.md)
+    [Read the overview](getting-started/a-day-at-the-clinic.md){ .more }
 
 -   :material-tablet:{ .lg .middle } **Set up your iPad**
 
@@ -28,76 +28,81 @@ This guide walks you through the everyday tasks, one page per task, with a pictu
 
     Create your account and connect your clinic's iPad. You only do this once per iPad.
 
-    [:octicons-arrow-right-24: Set up EasyJoey](getting-started/set-up-your-ipad.md)
+    [Set up EasyJoey](getting-started/set-up-your-ipad.md){ .more }
 
 </div>
 
 ## The guides
 
-<div class="grid cards" markdown>
+<div class="groups" markdown>
 
--   :material-rocket-launch-outline:{ .lg .middle } **Getting started**
+<div class="group" markdown>
 
-    ---
+### :material-rocket-launch-outline: Getting started
 
-    - [Get your account and set up your iPad](getting-started/set-up-your-ipad.md)
-    - [Sign in and a first look](getting-started/sign-in-and-home.md)
+- [Get your account and set up your iPad](getting-started/set-up-your-ipad.md)
+- [Sign in and a first look](getting-started/sign-in-and-home.md)
 
--   :material-account-multiple-outline:{ .lg .middle } **Patients**
+</div>
 
-    ---
+<div class="group" markdown>
 
-    - [Find or add a patient](patients/find-or-add-a-patient.md)
-    - [The patient page and profile](patients/patient-page-and-profile.md)
+### :material-account-multiple-outline: Patients
 
--   :material-stethoscope:{ .lg .middle } **Seeing a patient**
+- [Find or add a patient](patients/find-or-add-a-patient.md)
+- [The patient page and profile](patients/patient-page-and-profile.md)
 
-    ---
+</div>
 
-    - [Start an encounter](visits/start-an-encounter.md)
-    - [Record notes in the encounter](visits/record-notes.md)
-    - [Prescriptions, orders and attachments](visits/prescriptions-orders-attachments.md)
-    - [Consents](visits/consents.md)
-    - [Finish the visit](visits/finish-the-visit.md)
+<div class="group" markdown>
 
--   :material-cash-register:{ .lg .middle } **Payments**
+### :material-stethoscope: Seeing a patient
 
-    ---
+- [Start an encounter](visits/start-an-encounter.md)
+- [Record notes in the encounter](visits/record-notes.md)
+- [Prescriptions, orders and attachments](visits/prescriptions-orders-attachments.md)
+- [Consents](visits/consents.md)
+- [Finish the visit](visits/finish-the-visit.md)
 
-    - [Charges and the Cashier](payments/charges-and-cashier.md)
-    - [Billing, balances and payment plans](payments/billing-and-payment-plans.md)
+</div>
 
--   :material-calendar-month-outline:{ .lg .middle } **Schedule**
+<div class="group" markdown>
 
-    ---
+### :material-cash-register: Payments
 
-    - [Appointments](schedule/appointments.md)
+- [Charges and the Cashier](payments/charges-and-cashier.md)
+- [Billing, balances and payment plans](payments/billing-and-payment-plans.md)
 
--   :material-cog-outline:{ .lg .middle } **Your clinic**
+</div>
 
-    ---
+<div class="group" markdown>
 
-    - [Settings basics](clinic/settings-basics.md)
-    - [Notifications and Analytics](clinic/notifications-and-analytics.md)
-    - [Syncing and working offline](clinic/sync-and-offline.md)
+### :material-calendar-month-outline: Schedule
+
+- [Appointments](schedule/appointments.md)
+
+</div>
+
+<div class="group" markdown>
+
+### :material-cog-outline: Your clinic
+
+- [Settings basics](clinic/settings-basics.md)
+- [Notifications and Analytics](clinic/notifications-and-analytics.md)
+- [Syncing and working offline](clinic/sync-and-offline.md)
+
+</div>
 
 </div>
 
 ## How to read the pages
 
-<div class="grid" markdown>
+<div class="group plain" markdown>
 
-<div markdown>
-**Words in bold** are exactly what you'll see on screen: a button, a tab or a menu item.
-</div>
-
-<div markdown>
-**You should see** boxes tell you what the screen looks like when a step worked.
-</div>
-
-<div markdown>
-**Tap any picture** to see it full size. **New words** are explained in [Words you'll see](words-you-will-see.md).
-</div>
+- **Words in bold** are exactly what you'll see on screen: a button, a tab or a menu item.
+- **You should see** boxes tell you what the screen looks like when a step worked.
+- **Tap any picture** to see it full size.
+- **New words** are explained in [Words you'll see](words-you-will-see.md).
 
 </div>
 
