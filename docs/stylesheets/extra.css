@@ -6,80 +6,80 @@
 
 :root,
 [data-md-color-scheme="default"] {
-  --ej-fg: #1d1d1f;
-  --ej-fg-2: #6e6e73;             /* secondary text: 5.07:1 on white */
-  --ej-bg: #ffffff;
-  --ej-elev: #f5f5f7;             /* grouped surfaces */
-  --ej-elev-hover: #ebebef;
-  --ej-sep: #d2d2d7;              /* hairlines (decorative) */
-  --ej-chevron: #86868b;
-  --ej-accent: #0066cc;
-  --ej-ok: #248a3d;
-  --ej-warn: #b64400;
-  --ej-bar: rgb(251 251 253 / 80%);
-  --ej-bar-solid: #fbfbfd;
-  --ej-img-shadow: 0 1px 2px rgb(0 0 0 / 4%), 0 6px 20px rgb(0 0 0 / 6%);
-  --ej-r: 12px;
+  --guide-fg: #1d1d1f;
+  --guide-fg-2: #6e6e73;             /* secondary text: 5.07:1 on white */
+  --guide-bg: #ffffff;
+  --guide-elev: #f5f5f7;             /* grouped surfaces */
+  --guide-elev-hover: #ebebef;
+  --guide-sep: #d2d2d7;              /* hairlines (decorative) */
+  --guide-chevron: #86868b;
+  --guide-accent: #0066cc;
+  --guide-ok: #248a3d;
+  --guide-warn: #b64400;
+  --guide-bar: rgb(251 251 253 / 80%);
+  --guide-bar-solid: #fbfbfd;
+  --guide-img-shadow: 0 1px 2px rgb(0 0 0 / 4%), 0 6px 20px rgb(0 0 0 / 6%);
+  --guide-r: 12px;
 
-  --md-default-fg-color: var(--ej-fg);
-  --md-default-fg-color--light: var(--ej-fg-2);
-  --md-default-bg-color: var(--ej-bg);
-  --md-typeset-color: var(--ej-fg);
-  --md-typeset-a-color: var(--ej-accent);
-  --md-typeset-table-color: var(--ej-sep);
-  --md-primary-fg-color: var(--ej-bar-solid);
-  --md-primary-fg-color--light: var(--ej-elev);
-  --md-primary-fg-color--dark: var(--ej-fg);
-  --md-primary-bg-color: var(--ej-fg);
-  --md-primary-bg-color--light: var(--ej-fg-2);
-  --md-accent-fg-color: var(--ej-accent);
-  --md-footer-bg-color: var(--ej-elev);
-  --md-footer-bg-color--dark: var(--ej-elev);
-  --md-footer-fg-color: var(--ej-fg);
-  --md-footer-fg-color--light: var(--ej-fg-2);
-  --md-footer-fg-color--lighter: var(--ej-fg-2);
+  --md-default-fg-color: var(--guide-fg);
+  --md-default-fg-color--light: var(--guide-fg-2);
+  --md-default-bg-color: var(--guide-bg);
+  --md-typeset-color: var(--guide-fg);
+  --md-typeset-a-color: var(--guide-accent);
+  --md-typeset-table-color: var(--guide-sep);
+  --md-primary-fg-color: var(--guide-bar-solid);
+  --md-primary-fg-color--light: var(--guide-elev);
+  --md-primary-fg-color--dark: var(--guide-fg);
+  --md-primary-bg-color: var(--guide-fg);
+  --md-primary-bg-color--light: var(--guide-fg-2);
+  --md-accent-fg-color: var(--guide-accent);
+  --md-footer-bg-color: var(--guide-elev);
+  --md-footer-bg-color--dark: var(--guide-elev);
+  --md-footer-fg-color: var(--guide-fg);
+  --md-footer-fg-color--light: var(--guide-fg-2);
+  --md-footer-fg-color--lighter: var(--guide-fg-2);
 }
 
 /* Dark is its own palette, not an inversion: black page, lighter raised surfaces. */
 [data-md-color-scheme="slate"] {
-  --ej-fg: #f5f5f7;
-  --ej-fg-2: #a1a1a6;
-  --ej-bg: #000000;
-  --ej-elev: #1c1c1e;
-  --ej-elev-hover: #2c2c2e;
-  --ej-sep: #38383a;
-  --ej-chevron: #8e8e93;
-  --ej-accent: #2997ff;
-  --ej-ok: #30d158;
-  --ej-warn: #ff9f0a;
-  --ej-bar: rgb(22 22 23 / 80%);
-  --ej-bar-solid: #161617;
-  --ej-img-shadow: none;
+  --guide-fg: #f5f5f7;
+  --guide-fg-2: #a1a1a6;
+  --guide-bg: #000000;
+  --guide-elev: #1c1c1e;
+  --guide-elev-hover: #2c2c2e;
+  --guide-sep: #38383a;
+  --guide-chevron: #8e8e93;
+  --guide-accent: #2997ff;
+  --guide-ok: #30d158;
+  --guide-warn: #ff9f0a;
+  --guide-bar: rgb(22 22 23 / 80%);
+  --guide-bar-solid: #161617;
+  --guide-img-shadow: none;
 
-  --md-default-fg-color: var(--ej-fg);
-  --md-default-fg-color--light: var(--ej-fg-2);
+  --md-default-fg-color: var(--guide-fg);
+  --md-default-fg-color--light: var(--guide-fg-2);
   --md-default-fg-color--lighter: #86868b;
-  --md-default-fg-color--lightest: var(--ej-sep);
-  --md-default-bg-color: var(--ej-bg);
-  --md-typeset-color: var(--ej-fg);
-  --md-typeset-a-color: var(--ej-accent);
-  --md-typeset-table-color: var(--ej-sep);
-  --md-primary-fg-color: var(--ej-bar-solid);
-  --md-primary-fg-color--light: var(--ej-elev);
-  --md-primary-fg-color--dark: var(--ej-fg);
-  --md-primary-bg-color: var(--ej-fg);
-  --md-primary-bg-color--light: var(--ej-fg-2);
-  --md-accent-fg-color: var(--ej-accent);
-  --md-footer-bg-color: var(--ej-elev);
-  --md-footer-bg-color--dark: var(--ej-elev);
-  --md-footer-fg-color: var(--ej-fg);
-  --md-footer-fg-color--light: var(--ej-fg-2);
-  --md-footer-fg-color--lighter: var(--ej-fg-2);
+  --md-default-fg-color--lightest: var(--guide-sep);
+  --md-default-bg-color: var(--guide-bg);
+  --md-typeset-color: var(--guide-fg);
+  --md-typeset-a-color: var(--guide-accent);
+  --md-typeset-table-color: var(--guide-sep);
+  --md-primary-fg-color: var(--guide-bar-solid);
+  --md-primary-fg-color--light: var(--guide-elev);
+  --md-primary-fg-color--dark: var(--guide-fg);
+  --md-primary-bg-color: var(--guide-fg);
+  --md-primary-bg-color--light: var(--guide-fg-2);
+  --md-accent-fg-color: var(--guide-accent);
+  --md-footer-bg-color: var(--guide-elev);
+  --md-footer-bg-color--dark: var(--guide-elev);
+  --md-footer-fg-color: var(--guide-fg);
+  --md-footer-fg-color--light: var(--guide-fg-2);
+  --md-footer-fg-color--lighter: var(--guide-fg-2);
 }
 
 /* Continuous (squircle) corners where the browser supports them. */
 @supports (corner-shape: squircle) {
-  :root { --ej-r: 18px; }
+  :root { --guide-r: 18px; }
 
   .md-typeset img,
   .md-typeset table:not([class]),
@@ -99,7 +99,7 @@ body {
 }
 
 :root :focus-visible {
-  outline: 2px solid var(--ej-accent);
+  outline: 2px solid var(--guide-accent);
   outline-offset: 2px;
 }
 
@@ -107,14 +107,14 @@ body {
 
 .md-header,
 .md-header--shadow {
-  background-color: var(--ej-bar-solid);
-  color: var(--ej-fg);
-  box-shadow: 0 1px 0 var(--ej-sep);
+  background-color: var(--guide-bar-solid);
+  color: var(--guide-fg);
+  box-shadow: 0 1px 0 var(--guide-sep);
 }
 
 @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
   .md-header {
-    background-color: var(--ej-bar);
+    background-color: var(--guide-bar);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
   }
@@ -122,7 +122,7 @@ body {
 
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more), (prefers-reduced-motion: reduce) {
   .md-header {
-    background-color: var(--ej-bar-solid);
+    background-color: var(--guide-bar-solid);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
@@ -144,21 +144,21 @@ body {
 @media screen and (min-width: 60em) {
   .md-search__form {
     border-radius: 10px;
-    background-color: var(--ej-elev);
+    background-color: var(--guide-elev);
   }
 
   .md-search__form:hover {
-    background-color: var(--ej-elev-hover);
+    background-color: var(--guide-elev-hover);
   }
 
   .md-search__input,
   .md-search__input::placeholder,
   .md-search__input ~ .md-search__icon {
-    color: var(--ej-fg-2);
+    color: var(--guide-fg-2);
   }
 
   [data-md-toggle="search"]:checked ~ .md-header .md-search__input {
-    color: var(--ej-fg);
+    color: var(--guide-fg);
   }
 }
 
@@ -186,7 +186,7 @@ body {
 /* Title ramp: semibold, tight tracking at large sizes. */
 .md-typeset h1 {
   margin: 0 0 12px;
-  color: var(--ej-fg);
+  color: var(--guide-fg);
   font-size: 34px;
   font-weight: 600;
   line-height: 1.15;
@@ -205,7 +205,7 @@ body {
 .md-typeset h3 {
   margin: 36px 0 12px;
   padding-top: 24px;
-  border-top: 1px solid var(--ej-sep);
+  border-top: 1px solid var(--guide-sep);
   font-size: 20px;
   font-weight: 600;
   line-height: 1.25;
@@ -230,7 +230,7 @@ body {
 }
 
 .md-path__link {
-  color: var(--ej-fg-2);
+  color: var(--guide-fg-2);
 }
 
 /* ---------- The top of each page ---------- */
@@ -238,7 +238,7 @@ body {
 /* The sentence under the title says what the page is for. */
 .md-typeset h1 + p.meta,
 .md-typeset p.lead {
-  color: var(--ej-fg-2);
+  color: var(--guide-fg-2);
   font-size: 21px;
   line-height: 1.38;
   letter-spacing: 0.004em;
@@ -247,9 +247,9 @@ body {
 /* "Time · You'll need" sits on its own grouped surface so it isn't skipped. */
 .md-typeset p.meta + p.meta {
   padding: 12px 16px;
-  border-radius: var(--ej-r);
-  background: var(--ej-elev);
-  color: var(--ej-fg);
+  border-radius: var(--guide-r);
+  background: var(--guide-elev);
+  color: var(--guide-fg);
   font-size: 15px;
 }
 
@@ -259,8 +259,8 @@ body {
 .md-typeset .see {
   position: relative;
   padding: 12px 16px 12px 44px;
-  border-radius: var(--ej-r);
-  background: var(--ej-elev);
+  border-radius: var(--guide-r);
+  background: var(--guide-elev);
 }
 
 .md-typeset .see::before {
@@ -270,7 +270,7 @@ body {
   width: 18px;
   height: 18px;
   content: "";
-  background-color: var(--ej-ok);
+  background-color: var(--guide-ok);
   -webkit-mask-image: var(--md-admonition-icon--success);
   mask-image: var(--md-admonition-icon--success);
   -webkit-mask-size: contain;
@@ -285,9 +285,9 @@ body {
   display: block;
   max-width: min(860px, 100%);
   margin: 16px 0 24px;
-  border: 1px solid var(--ej-sep);
-  border-radius: var(--ej-r);
-  box-shadow: var(--ej-img-shadow);
+  border: 1px solid var(--guide-sep);
+  border-radius: var(--guide-r);
+  box-shadow: var(--guide-img-shadow);
 }
 
 /* A narrower screenshot for a single sheet, menu or dialog: ![...](x.png){ .shot-sm } */
@@ -303,8 +303,8 @@ body {
   margin: 24px 0;
   padding: 0 16px 4px;
   border: 0;
-  border-radius: var(--ej-r);
-  background: var(--ej-elev);
+  border-radius: var(--guide-r);
+  background: var(--guide-elev);
   box-shadow: none;
   font-size: 16px;
 }
@@ -324,11 +324,11 @@ body {
   left: 16px;
   width: 18px;
   height: 18px;
-  background-color: var(--ej-accent);
+  background-color: var(--guide-accent);
 }
 
 .md-typeset :is(.admonition.warning, .admonition.danger, details.warning) > :is(.admonition-title, summary)::before {
-  background-color: var(--ej-warn);
+  background-color: var(--guide-warn);
 }
 
 .md-typeset .admonition > :last-child {
@@ -338,14 +338,14 @@ body {
 /* ---------- Tables ---------- */
 
 .md-typeset table:not([class]) {
-  border: 1px solid var(--ej-sep);
-  border-radius: var(--ej-r);
+  border: 1px solid var(--guide-sep);
+  border-radius: var(--guide-r);
   font-size: 15px;
   line-height: 1.45;
 }
 
 .md-typeset table:not([class]) th {
-  background: var(--ej-elev);
+  background: var(--guide-elev);
   font-weight: 600;
 }
 
@@ -364,8 +364,8 @@ body {
 .md-typeset .grid.cards > ul > li {
   padding: 20px;
   border: 0;
-  border-radius: var(--ej-r);
-  background: var(--ej-elev);
+  border-radius: var(--guide-r);
+  background: var(--guide-elev);
   box-shadow: none;
 }
 
@@ -381,7 +381,7 @@ body {
 }
 
 .md-typeset .grid.cards .lg {
-  color: var(--ej-accent);
+  color: var(--guide-accent);
 }
 
 .md-typeset .grid.cards hr {
@@ -409,15 +409,15 @@ body {
 
 .md-typeset .group h3 .twemoji {
   margin-right: 4px;
-  color: var(--ej-accent);
+  color: var(--guide-accent);
 }
 
 .md-typeset .group ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  border-radius: var(--ej-r);
-  background: var(--ej-elev);
+  border-radius: var(--guide-r);
+  background: var(--guide-elev);
   list-style: none;
 }
 
@@ -432,7 +432,7 @@ body {
   top: 0;
   right: 0;
   left: 16px;
-  border-top: 1px solid var(--ej-sep);
+  border-top: 1px solid var(--guide-sep);
   content: "";
 }
 
@@ -453,7 +453,7 @@ body {
 
 .md-typeset .group:not(.plain) ul li > a::after {
   flex: none;
-  color: var(--ej-chevron);
+  color: var(--guide-chevron);
   font-size: 22px;
   line-height: 1;
   content: "\203a" / "";
@@ -465,7 +465,7 @@ body {
 
 @media (hover: hover) {
   .md-typeset .group:not(.plain) ul li > a:hover {
-    background-color: var(--ej-elev-hover);
+    background-color: var(--guide-elev-hover);
   }
 }
 
@@ -482,10 +482,10 @@ body {
 /* ---------- Footer ---------- */
 
 .md-footer {
-  border-top: 1px solid var(--ej-sep);
+  border-top: 1px solid var(--guide-sep);
 }
 
 .md-footer-meta {
-  border-top: 1px solid var(--ej-sep);
+  border-top: 1px solid var(--guide-sep);
   font-size: 12px;
 }

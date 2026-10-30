@@ -1,8 +1,9 @@
-site/
+/site/
 .venv/
 node_modules/
 capture/.auth/
 capture/test-results/
+capture/test-results-site/
 __pycache__/
 .visit-url
 capture/.env.local

@@ -1,6 +1,6 @@
 <!--
 PAGE TEMPLATE: copy this file for every new guide page (it is excluded from the site).
-It is app-neutral: the same shape is used for the Dentalemon and EasyJoey guides.
+It is app-neutral: the same shape is used for every app's guide.
 
 Writing rules
 - Title = the task, in plain words ("Add a new patient"), not the screen name.
