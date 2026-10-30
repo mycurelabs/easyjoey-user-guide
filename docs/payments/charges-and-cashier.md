@@ -18,7 +18,9 @@ Put the visit's services on the bill, send it to the Cashier, apply a Senior Cit
 
 In the encounter, look at the top right. The **Charges** button shows the running total, for example **Charges · ₱800**.
 
-When an encounter opens, EasyJoey puts the visit type's service on the bill by itself. A short message says so, for example **Invoice opened with Consultation**, with **Undo**.
+When an encounter opens with a visit type (for example from a booked appointment), EasyJoey puts that visit type's service on the bill by itself. A short message says so, for example **Invoice opened with Consultation**, with **Undo**.
+
+An encounter started from a patient's page or from **Encounters** has no visit type, so nothing is added. Tap **Charges** and add the service yourself.
 
 You should see: the encounter, with **Charges · ₱800** next to **End encounter**.
 { .see }
@@ -68,7 +70,10 @@ Once the encounter ends, the bill moves to the Cashier's **Waiting** list. See [
 
 Tap **Cashier** in the sidebar.
 
-You should see: the **Waiting** list. Each row shows the patient, the visit type, how many charges, when the bill was ready, and the amount. The number next to **Cashier** in the sidebar counts the bills waiting.
+You should see: the **Waiting** list. Each row shows the patient, the visit type, how many charges, when the bill was ready, and the amount.
+
+!!! warning "After a part payment"
+    The **Waiting** row keeps showing the bill's full amount after the patient pays part of it. Open the bill and check **Balance due** before you collect the rest. The number next to **Cashier** in the sidebar counts the bills waiting.
 { .see }
 
 ![The Cashier page with one bill Waiting: Cruz, Josefina, Consultation, 2 charges, the time it was ready, ₱1,100](../assets/charges-and-cashier/06-cashier-waiting.webp)

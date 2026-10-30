@@ -62,7 +62,7 @@ Filter by **Status** or **Payer**. Tap **⋮** on a claim to move it along. A dr
 
 A payment plan splits a big bill into a down payment and monthly installments. Start it from the patient, so the patient is filled in for you.
 
-Open the patient, tap the **Billing** tab, choose **Plans** from **View**, then tap **Create payment plan**. (You can also tap **Create payment plan** in **Billing › Payment plans** and choose the patient.)
+Open the patient's page (a patient who has had a visit opens on that visit: tap **←** at the top left to reach their page), tap the **Billing** tab, choose **Plans** from **View**, then tap **Create payment plan**. (You can also tap **Create payment plan** in **Billing › Payment plans** and choose the patient.)
 
 Fill in **Plan title**, **Proposed total**, **Down payment**, **Number of monthly installments** and **First installment date**. Further down, fill in **Responsible payer**, **Payer relationship**, **Included services** and **Exclusions**. Tap **Save draft agreement**.
 
@@ -120,7 +120,7 @@ You should see: each plan with its patient, its latest agreement and its **Finan
 
 ### 10. See one patient's billing
 
-Open a patient and tap the **Billing** tab. Or, in Billing, tap **⋮ › View billing** on a row.
+In **Billing**, open **Payments due** and tap **⋮ › View billing** on the patient's row. Or open the patient's page and tap the **Billing** tab: a patient who has had a visit opens on that visit first, so tap **←** at the top left to reach their page.
 
 You should see: the patient's payment plans with **Due now** and **Scheduled later**, then **Balance due**, **Owed by payers** and **Last payment**, and their open invoices with **Collect at the cashier**. Use **View** to switch between **Due**, **Statement**, **Invoices**, **Claims** and **Plans**.
 { .see }

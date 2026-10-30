@@ -137,7 +137,7 @@ Once an encounter has ended, its records are final. You can't edit or remove the
 
 ### 11. Amend a record
 
-Open the card and tap **Amend…**. Make your change, then tap **Save**.
+Open the card and tap **Amend…**. Make your change, then tap **Continue**.
 
 You should see: **Amend…** where **Edit** used to be.
 { .see }
