@@ -1,0 +1,97 @@
+site_name: EasyJoey User Guide
+site_description: Step-by-step guides for doctors and clinic staff using EasyJoey.
+site_url: https://mycurelabs.github.io/easyjoey-user-guide/
+edit_uri: ""
+copyright: EasyJoey by MYCURE Inc. · Screenshots use made-up demo data.
+
+theme:
+  name: material
+  language: en
+  logo: assets/brand/icon.png
+  favicon: assets/brand/icon.png
+  font: false
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  features:
+    - navigation.instant
+    - navigation.path
+    - navigation.sections
+    - navigation.footer
+    - navigation.top
+    - navigation.indexes
+    - search.highlight
+    - search.suggest
+    - content.tooltips
+    - toc.follow
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      width: 100%
+      zoomable: true
+      draggable: false
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.keys
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: false
+
+exclude_docs: |
+  _template.md
+
+nav:
+  - Welcome: index.md
+  - Getting started:
+      - A patient visit from start to finish: getting-started/a-day-at-the-clinic.md
+      - Get your account and set up your iPad: getting-started/set-up-your-ipad.md
+      - Sign in and a first look: getting-started/sign-in-and-home.md
+  - Patients:
+      - Find or add a patient: patients/find-or-add-a-patient.md
+      - The patient page and profile: patients/patient-page-and-profile.md
+  - Seeing a patient:
+      - Start an encounter: visits/start-an-encounter.md
+      - Record notes in the encounter: visits/record-notes.md
+      - Prescriptions, orders and attachments: visits/prescriptions-orders-attachments.md
+      - Consents: visits/consents.md
+      - Finish the visit: visits/finish-the-visit.md
+  - Payments:
+      - Charges and the Cashier: payments/charges-and-cashier.md
+      - Billing, balances and payment plans: payments/billing-and-payment-plans.md
+  - Schedule:
+      - Appointments: schedule/appointments.md
+  - Your clinic:
+      - Settings basics: clinic/settings-basics.md
+      - Notifications and Analytics: clinic/notifications-and-analytics.md
+      - Syncing and working offline: clinic/sync-and-offline.md
+  - Words you'll see: words-you-will-see.md

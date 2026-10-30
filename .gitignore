@@ -1,0 +1,8 @@
+site/
+.venv/
+node_modules/
+capture/.auth/
+capture/test-results/
+__pycache__/
+.visit-url
+capture/.env.local

@@ -1,0 +1,13 @@
+{
+  "name": "guide-capture",
+  "private": true,
+  "type": "module",
+  "description": "Re-runnable Playwright scripts that take the guide's screenshots from a running app with demo data.",
+  "scripts": {
+    "capture": "playwright test --config capture.config.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "sharp": "0.34.4"
+  }
+}

@@ -1,0 +1,178 @@
+/* Brand: ink is the primary, blue marks links and focus (EasyJoey). */
+:root {
+  --md-primary-fg-color: #1d1d1f;
+  --md-primary-fg-color--light: #3a3a3c;
+  --md-primary-fg-color--dark: #000000;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #ffffffb3;
+  --md-accent-fg-color: #0066cc;
+  --md-typeset-a-color: #0066cc;
+  /* Tints used by the page parts below. */
+  --ej-tint: rgb(0 102 204 / 6%);
+  --ej-tint-strong: rgb(0 102 204 / 12%);
+  --ej-ok: #1a7f37;
+  --ej-ok-tint: rgb(26 127 55 / 7%);
+  --ej-card-border: var(--md-default-fg-color--lightest);
+}
+
+/* The light scheme sets its own link colour from the (black) primary, which
+   makes links look like plain text; keep them blue so they read as links. */
+[data-md-color-scheme="default"] {
+  --md-accent-fg-color: #0066cc;
+  --md-typeset-a-color: #0066cc;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #1d1d1f;
+  --md-primary-bg-color: #f5f5f7;
+  --md-accent-fg-color: #4ea1ff;
+  --md-typeset-a-color: #4ea1ff;
+  --ej-tint: rgb(78 161 255 / 10%);
+  --ej-tint-strong: rgb(78 161 255 / 18%);
+  --ej-ok: #4ac26b;
+  --ej-ok-tint: rgb(74 194 107 / 10%);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Slightly larger body text: the guide is read on iPads, often at arm's length. */
+.md-typeset {
+  font-size: 0.86rem;
+  line-height: 1.65;
+}
+
+/* ---------- Headings ---------- */
+
+/* The page title is the task: make it the strongest thing on the page. */
+.md-typeset h1 {
+  color: var(--md-default-fg-color);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.6em;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 2.2em;
+}
+
+/* Each numbered step starts a new block, so steps never run together. */
+.md-typeset h3 {
+  font-weight: 700;
+  margin-top: 2em;
+  padding-top: 1.2em;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset h2 + h3 {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 1.2em;
+}
+
+/* ---------- The top of each page ---------- */
+
+/* The sentence under the title says what the page is for. */
+.md-typeset h1 + p.meta,
+.md-typeset p.lead {
+  color: var(--md-default-fg-color--light);
+  font-size: 1.05em;
+  margin-top: -0.2em;
+}
+
+/* "Time · You'll need" sits in its own strip so it isn't skipped. */
+.md-typeset p.meta + p.meta {
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  background: var(--ej-tint);
+  color: var(--md-default-fg-color);
+  font-size: 0.8rem;
+}
+
+/* ---------- Steps ---------- */
+
+/* "You should see:" boxes: what the screen looks like when the step worked. */
+.md-typeset .see {
+  position: relative;
+  padding: 0.55rem 0.9rem 0.55rem 2.4rem;
+  border-left: 4px solid var(--ej-ok);
+  border-radius: 0 10px 10px 0;
+  background: var(--ej-ok-tint);
+}
+
+.md-typeset .see::before {
+  position: absolute;
+  top: 0.72rem;
+  left: 0.8rem;
+  width: 1rem;
+  height: 1rem;
+  content: "";
+  background-color: var(--ej-ok);
+  -webkit-mask-image: var(--md-admonition-icon--success);
+  mask-image: var(--md-admonition-icon--success);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+/* Screenshots: a soft frame so white app screens don't melt into the page,
+   capped so a full iPad screen stays readable without scrolling sideways. */
+.md-typeset img:not(.twemoji):not([src$=".svg"]) {
+  display: block;
+  max-width: min(860px, 100%);
+  margin: 0.8rem 0 1.4rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 8%);
+}
+
+/* A narrower screenshot for a single sheet, menu or dialog: ![...](x.png){ .shot-sm } */
+.md-typeset img.shot-sm {
+  max-width: min(520px, 100%);
+}
+
+/* Tables: a tinted header row so the columns are easy to follow. */
+.md-typeset table:not([class]) th {
+  background: var(--ej-tint);
+}
+
+/* ---------- Welcome page cards ---------- */
+
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid > div {
+  border: 1px solid var(--ej-card-border);
+  border-radius: 14px;
+  transition: border-color 150ms, box-shadow 150ms;
+}
+
+.md-typeset .grid > div {
+  padding: 0.8rem 1rem;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);
+}
+
+.md-typeset .grid.cards .lg {
+  color: var(--md-accent-fg-color);
+}
+
+/* The two "Start here" cards stand out from the list of guides. */
+.md-typeset .grid.cards.start > ul > li {
+  background: var(--ej-tint);
+  border-color: var(--ej-tint-strong);
+}
+
+.md-typeset .grid.cards ul ul {
+  margin-left: 0;
+  list-style: none;
+}
+
+.md-typeset .grid.cards ul ul li {
+  margin-left: 0;
+}
